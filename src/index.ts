@@ -1,4 +1,4 @@
-import { Cart } from "./models/cart.model";
+import { Cart, CartItem } from "./models/cart.model";
 import { User } from "./models/user.model";
 
 const userLoggedIn = new User(1, "Aryadne", "aryadne@example.com", "ADMIN");
@@ -51,7 +51,32 @@ cart.cartItem.push({
         },
     },
     quantity: 2
+},
+{
+    product: {
+        id: 34,
+        name: "Boia de flamingo",
+        price: 23.99,
+        category: {
+            id: 11,
+            name: "Praia e piscina"
+        },
+    },
+    quantity: 2
 })
+
+function addItem(cart: Cart, newItem: CartItem){
+    const itemExists = cart.cartItem.some(item => {
+        if (item.product.id === item.product.id) {
+            item.quantity += item.quantity;
+            return true;
+        }
+        return false;
+    })
+    if (!itemExists) {
+        cart.cartItem.push(newItem);
+    }
+}
 
 function getTotalItems(cart: Cart) {
     let somaItems = 0;
