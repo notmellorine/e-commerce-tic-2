@@ -1,4 +1,18 @@
 import { Cart } from "./models/cart.model";
+import { User } from "./models/user.model";
+
+const userLoggedIn = new User(1, "Aryadne", "aryadne@example.com", "ADMIN");
+
+function checkUserRole(user: User) {
+     if (user.role !== "ADMIN" && user.role !== "CUSTOMER"){
+        console.error("ACESSO BLOQUEADO: O cargo do usuário não foi identificado e é inválido.")
+        process.exit(1);
+     } else {
+        console.log("ACESSO PERMITIDO: O cargo do usuário foi identificado e é válido.")
+     }
+}
+
+checkUserRole(userLoggedIn);
 
 const cart = new Cart();
 
